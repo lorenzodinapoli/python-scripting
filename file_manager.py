@@ -3,14 +3,14 @@ import shutil
 import time
 import logging
 from watchdog.observers import Observer
-from watchdog.events import LoggingEventHandler
+from watchdog.events import FileSystemEventHandler
 
 
 
 # Setting directories we want to give access to
 source_dir = "/Users/lorenzodinapoli/Downloads"
-dest_dir_pdf = "/Users/lorenzodinapoli/Downloads/pdf"
-dest_dir_img = "/Users/lorenzodinapoli/Downloads/images&videos"
+dest_dir_pdf = "/Users/lorenzodinapoli/Desktop/pdf"
+dest_dir_img = "/Users/lorenzodinapoli/Desktop/images&videos"
 
 
 def makeUnique(path):
@@ -46,8 +46,7 @@ class MoveHandler(FileSystemEventHandler):
 				if name.endswith(".pdf"): # Moving PDFs
 					dest = dest_dir_pdf
 					move(dest, file, name)
-				elif name.endswith(".jpeg") or name.endswith(".png") 
-					or name.endswith(".jpg") or name.endswith(".mp4") or name.endswith(".mov"): # Moving images and videos
+				elif name.endswith(".jpeg") or name.endswith(".png") or name.endswith(".jpg") or name.endswith(".mp4") or name.endswith(".mov"): # Moving images and videos
 					dest = dest_dir_img
 					move(dest, file, name)
 
@@ -65,8 +64,8 @@ if __name__ == "__main__":
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
-        observer.stop()
-  	observer.join()
+    	observer.stop()
+    observer.join()
 
 
 
